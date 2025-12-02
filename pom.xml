@@ -100,7 +100,6 @@
                 <version>${javafx.maven.plugin.version}</version>
                 <configuration>
                     <mainClass>com.yunhang.forum.YunhangForumApplication</mainClass>
-                    <jvmArgs>--enable-native-access=javafx.graphics</jvmArgs>
                 </configuration>
             </plugin>
         </plugins>
