@@ -1,13 +1,13 @@
-package com.yunhang.forum.user;
+package com.yunhang.forum.model.entity;
 
-import com.yunhang.forum.global.GlobalVariable;
 import java.util.Map;
+import com.yunhang.forum.model.session.UserSession;
 
 public class Admin extends User {
 
     public Admin(String studentID, String nickname, String password) {
         super(studentID, nickname, password);
-        GlobalVariable.adminMap.put(userID, this);
+        GlobalVariables.adminMap.put(userID, this);
     }
 
     @Override
@@ -33,9 +33,9 @@ public class Admin extends User {
     }
 
     public Map<String,Report> reviewReports() {
-        if (GlobalVariable.reportMap.isEmpty()) {
+        if (GlobalVariables.reportMap.isEmpty()) {
             System.out.println("目前没有收到任何举报。");
         }
-        return GlobalVariable.reportMap;
+        return GlobalVariables.reportMap;
     }
 }

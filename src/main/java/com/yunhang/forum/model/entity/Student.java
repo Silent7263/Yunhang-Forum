@@ -1,12 +1,12 @@
-package com.yunhang.forum.user;
+package com.yunhang.forum.model.entity;
 
-import com.yunhang.forum.global.GlobalVariable;
+import com.yunhang.forum.model.session.UserSession;
 
 public class Student extends User {
 
     public Student(String studentID, String nickname, String password) {
         super(studentID, nickname, password);
-        GlobalVariable.studentMap.put(userID, this);
+        GlobalVariables.studentMap.put(userID, this);
     }
 
     @Override
@@ -22,8 +22,8 @@ public class Student extends User {
     }
     public void reportUser(String targetId, String reason) {
         Report newReport = new Report(targetId, reason);
-        GlobalVariable.reportMap.put(newReport.getTargetId(),newReport);
-        if(GlobalVariable.reportMap.containsKey(newReport.getTargetId())) {
+        GlobalVariables.reportMap.put(newReport.getTargetId(),newReport);
+        if(GlobalVariables.reportMap.containsKey(newReport.getTargetId())) {
             System.out.println("举报成功");
         }
         else {

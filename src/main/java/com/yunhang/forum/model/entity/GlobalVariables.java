@@ -1,10 +1,10 @@
-package com.yunhang.forum.global;
+package com.yunhang.forum.model.entity;
 
-import com.yunhang.forum.user.*;
+
 import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-public class GlobalVariable {
+public class GlobalVariables {
     public static Map<String, User> userMap = new HashMap<>();
     public static Map<String, Student> studentMap = new HashMap<>();
     public static Map<String, Admin> adminMap = new HashMap<>();

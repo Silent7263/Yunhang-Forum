@@ -1,4 +1,4 @@
-package com.yunhang.forum.user;
+package com.yunhang.forum.model.entity;
 
 public class Report {
     String reason;

@@ -1,4 +1,7 @@
-package com.yunhang.forum.user;
+package com.yunhang.forum.model.session;
+
+
+import com.yunhang.forum.model.entity.*;
 
 public class UserSession {
     private static volatile UserSession instance;

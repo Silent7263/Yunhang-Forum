@@ -1,7 +1,11 @@
+package com.yunhang.forum.model;
+
+import com.yunhang.forum.model.entity.*;
+import com.yunhang.forum.model.session.UserSession;
 
 import java.util.Map;
-import com.yunhang.forum.user.*;
-public class Test {
+
+public class UserTest {
     public static void main(String[] args) {
 
         Student studentA = new Student("23371054", "小明", "password123");
