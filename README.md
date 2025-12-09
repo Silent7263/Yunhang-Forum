@@ -26,27 +26,41 @@
 Yunhang-Forum/
 ├── src/
 │   ├── main/
-│   │   ├── java/com/yunhang/forum/
-│   │   │   ├── model/          # 【数据模型层】 POJO实体类
-│   │   │   │   ├── enums/      # 存放 PostCategory, PostStatus 等枚举
-│   │   │   │   ├── entity/     # 存放 User, Post, Comment 等实体
-│   │   │   │   └── session/    # 存放 UserSession (单例)
-│   │   │   ├── dao/            # 【数据访问层】 负责读写 JSON/文件
-│   │   │   │   ├── impl/       # 接口实现 (JsonDataLoader)
-│   │   │   │   └── DataLoader.java (接口)
-│   │   │   ├── service/        # 【业务逻辑层】 核心算法、排序策略
-│   │   │   │   ├── impl/
-│   │   │   │   └── strategy/   # 存放 PostSortStrategy 及其实现类
-│   │   │   ├── view/           # 【视图层】 JavaFX 的 FXML 文件和 UI 组件
-│   │   │   ├── controller/     # 【控制器层】 JavaFX 的 UI 控制器 (处理点击事件)
-│   │   │   ├── util/           # 【工具层】 IdGenerator, SecurityUtil, FileUtil
-│   │   │   └── MainApp.java    # 程序启动入口
+│   │   ├── java/
+│   │   │   └── com/yunhang/forum/
+│   │   │       ├── MainApp.java            # [入口] JavaFX 启动类
+│   │   │       ├── model/                  # [实体层] User, Post...
+│   │   │       ├── dao/                    # [数据层] DataLoader...
+│   │   │       ├── service/                # [业务层] UserService, PostService
+│   │   │       │   └── EmailService.java   # [新增] 邮箱服务
+│   │   │       ├── controller/             # [控制层] 处理 FXML 逻辑
+│   │   │       │   ├── auth/               # 认证相关控制器
+│   │   │       │   │   ├── LoginController.java
+│   │   │       │   │   └── RegisterController.java
+│   │   │       │   ├── main/               # 主界面相关控制器
+│   │   │       │   │   └── MainLayoutController.java
+│   │   │       │   └── post/               # 帖子相关控制器
+│   │   │       │       ├── PostItemController.java
+│   │   │       │       └── PostDetailController.java
+│   │   │       └── util/                   # [工具层]
+│   │   │           └── ViewManager.java    # [新增] 负责页面切换
 │   │   └── resources/
-│   │       ├── fxml/           # FXML 布局文件
-│   │       ├── css/            # 样式表
-│   │       └── images/         # 图标素材
-│   └── test/                   # 单元测试
-├── data/                       # 运行时生成的 JSON 数据文件
+│   │       ├── com/yunhang/forum/          # [关键] 保持与包名一致，避免模块化问题
+│   │       │   ├── fxml/                   # FXML 布局文件
+│   │       │   │   ├── auth/
+│   │       │   │   │   ├── Login.fxml
+│   │       │   │   │   └── Register.fxml
+│   │       │   │   ├── main/
+│   │       │   │   │   └── MainLayout.fxml
+│   │       │   │   └── post/
+│   │       │   │       ├── PostItem.fxml
+│   │       │   │       └── PostDetail.fxml
+│   │       │   ├── css/
+│   │       │   │   └── style.css           # 全局样式
+│   │       │   └── images/                 # 图标、Logo、默认头像
+│   │       │       ├── logo.png
+│   │       │       └── ...
+│   │       └── module-info.java            # [模块配置]
 └── pom.xml
 ```
 
