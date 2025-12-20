@@ -5,6 +5,7 @@ module com.yunhang.forum {
 
     // Data / utils
     requires com.google.gson;
+    requires jakarta.mail;
 
     // Optional standard modules (uncomment if used)
     // requires java.sql;
@@ -23,4 +24,6 @@ module com.yunhang.forum {
     opens com.yunhang.forum.controller.auth to javafx.fxml;
     opens com.yunhang.forum.model.entity to javafx.fxml;
     opens com.yunhang.forum.model.enums to javafx.fxml;
+    opens com.yunhang.forum.controller.post to javafx.fxml;
+    opens com.yunhang.forum.controller.main to javafx.fxml;
 }

@@ -1,20 +1,56 @@
 package com.yunhang.forum.controller.auth;
 
-import javafx.event.ActionEvent;
+import com.yunhang.forum.util.UserService;
+import com.yunhang.forum.util.ViewManager;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class LoginController {
-    @FXML private TextField studentField;
+
+    // FXML注解用于将Java代码中的变量与FXML文件中定义的界面元素关联起来
+    @FXML private TextField studentIdField;
     @FXML private PasswordField passwordField;
+    @FXML private Label messageLabel;
+
+    // 依赖服务层
+    private final UserService userService = new UserService();
 
     @FXML
-    private void onLogin(ActionEvent e) {
-        String studentId = studentField != null ? studentField.getText() : "";
-        String password = passwordField != null ? passwordField.getText() : "";
-        // TODO: authenticate and navigate; for now, print
-        System.out.println("Login clicked: " + studentId + "/" + (password.isEmpty() ? "(empty)" : "****"));
+    protected void initialize() {
+        // 可以在这里进行初始化工作，例如设置默认值
+    }
+
+    private void setMessage(String text, boolean success) {
+        messageLabel.setText(text);
+        messageLabel.getStyleClass().removeAll("error", "success");
+        messageLabel.getStyleClass().add(success ? "success" : "error");
+    }
+
+    @FXML
+    protected void handleLoginButtonAction() {
+        String studentId = studentIdField.getText();
+        String password = passwordField.getText();
+
+        // 基础输入验证
+        if (studentId.isEmpty() || password.isEmpty()) {
+            setMessage("学号和密码不能为空", false);
+            return;
+        }
+
+        if (userService.login(studentId, password)) {
+            messageLabel.getStyleClass().removeAll("error", "success");
+            messageLabel.setText("登录成功");
+            ViewManager.switchScene("auth/UserProfile.fxml");
+
+        } else {
+            setMessage("学号或密码错误", false);
+        }
+    }
+
+    @FXML
+    protected void handleRegisterLinkAction() {
+        // 跳转到注册界面
+        ViewManager.switchScene("auth/Register.fxml");
     }
 }
-
