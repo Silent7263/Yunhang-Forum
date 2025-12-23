@@ -3,7 +3,14 @@
     -fx-primary-light: derive(-fx-primary-dark, 20%);
     -fx-bg-light: #F5F5F5;
     -fx-bg-white: #FFFFFF;
-    -fx-text-color: #333333;
+
+    /* High-contrast semantic text & interaction colors */
+    -fx-text-primary: #2c3e50;
+    -fx-text-secondary: #555555;
+    -fx-text-brand: #005be4;
+    -fx-bg-hover-light: #f0f7ff;
+
+    -fx-text-color: -fx-text-primary;
     -fx-border-default: #CCCCCC;
     -fx-error-color: #D32F2F;
     -fx-success-color: #388E3C;
@@ -45,7 +52,7 @@
 
 .link-button {
     -fx-background-color: transparent;
-    -fx-text-fill: #333333;
+    -fx-text-fill: -fx-text-primary;
     -fx-font-size: 13px;
     -fx-padding: 0;
     -fx-cursor: hand;
@@ -106,17 +113,22 @@
     -fx-background-color: -fx-bg-light;
 }
 
+/* Sidebar nav button (semantic variables) */
 .nav-button {
     -fx-background-color: transparent;
-    -fx-text-fill: -fx-text-color;
+    -fx-text-fill: -fx-text-secondary;
     -fx-alignment: CENTER_LEFT;
-    -fx-padding: 10 12;
-    -fx-background-radius: 6px;
+    -fx-padding: 12 18;
+    -fx-background-radius: 12;
+    -fx-font-size: 14px;
     -fx-cursor: hand;
+    -fx-transition: 0.3s;
 }
 
 .nav-button:hover {
-    -fx-background-color: derive(-fx-primary-dark, 88%);
+    -fx-background-color: -fx-bg-hover-light;
+    -fx-text-fill: -fx-text-brand;
+    -fx-font-weight: bold;
 }
 
 .nav-button:pressed {
@@ -195,7 +207,7 @@
 
 .label-message {
     -fx-font-size: 13px;
-    -fx-text-fill: -fx-text-color;
+    -fx-text-fill: -fx-text-primary;
     -fx-padding: 5px 0;
 }
 
@@ -251,7 +263,7 @@
 
 .nav-button {
     -fx-background-color: transparent;
-    -fx-text-fill: #9ca3af;
+    -fx-text-fill: -fx-text-secondary;
     -fx-alignment: CENTER_LEFT;
     -fx-padding: 12 18;
     -fx-background-radius: 12;
@@ -261,8 +273,9 @@
 }
 
 .nav-button:hover {
-    -fx-background-color: rgba(255, 255, 255, 0.05);
-    -fx-text-fill: #ffffff;
+    -fx-background-color: -fx-bg-hover-light;
+    -fx-text-fill: -fx-text-brand;
+    -fx-font-weight: bold;
 }
 
 .nav-button-active {
@@ -292,7 +305,7 @@
 
 .modern-list-view .list-cell {
     -fx-background-color: #2d313d;
-    -fx-text-fill: #e4e6eb;
+    -fx-text-fill: -fx-text-primary;
     -fx-padding: 15;
     -fx-background-radius: 8;
     -fx-margin: 5 0;
@@ -355,31 +368,48 @@
 /* 列表项样式 */
 .list-cell {
     -fx-background-color: transparent;
-    -fx-text-fill: #e2e8f0;
+    -fx-text-fill: -fx-text-primary;
     -fx-padding: 15;
     -fx-background-radius: 10;
+}
+
+/* 全局 Label 默认文字颜色，确保“我的帖子”“通知”等列表文字不再发灰 */
+.label,
+.list-cell .label {
+    -fx-text-fill: -fx-text-primary;
 }
 
 .list-cell:filled:hover {
     -fx-background-color: rgba(255, 255, 255, 0.05);
 }
-.nav-button-light {
+
+/* ComboBox 下拉菜单（popup） */
+.combo-box-popup .list-cell {
+    -fx-background-color: -fx-bg-white;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.combo-box-popup .list-cell:hover,
+.combo-box-popup .list-cell:selected {
+    -fx-background-color: -fx-text-brand;
+    -fx-text-fill: -fx-bg-white;
+}
+
+/* Keep the final nav-button definition aligned with semantic variables (avoid later overrides) */
+/* (Removed redundant duplicate .nav-button blocks above; this is now the single source of truth.) */
+.nav-button {
     -fx-background-color: transparent;
-    -fx-text-fill: #475569;
+    -fx-text-fill: -fx-text-secondary;
     -fx-alignment: CENTER_LEFT;
     -fx-padding: 12 18;
-    -fx-background-radius: 10;
+    -fx-background-radius: 12;
     -fx-font-size: 14px;
     -fx-cursor: hand;
+    -fx-transition: 0.3s;
 }
 
-.nav-button-light:hover {
-    -fx-background-color: #f1f5f9;
-    -fx-text-fill: #6366f1;
-}
-
-.nav-button-light:focused {
-    -fx-background-color: #eef2ff;
-    -fx-text-fill: #6366f1;
+.nav-button:hover {
+    -fx-background-color: -fx-bg-hover-light;
+    -fx-text-fill: -fx-text-brand;
     -fx-font-weight: bold;
 }
